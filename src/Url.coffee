@@ -45,12 +45,6 @@ angular.module('angryjs.url')
     urlGenerator = 'DomainApiUrlGenerator'
     apiVersion = 'v1'
 
-    invokeUrlGenerator = ($injector) ->
-      if angular.isString urlGenerator
-        $injector.get urlGenerator
-      else
-        $injector.invoke urlGenerator
-
     @setUrlGenerator = (generator) ->
       urlGenerator = generator
 
@@ -58,11 +52,11 @@ angular.module('angryjs.url')
       apiVersion = version
 
     @$get = [
-      '$rootScope', '$location', '$injector',
-      ($rootScope, $location, $injector) ->
+      '$rootScope', '$location', 'UrlGeneratorFactory',
+      ($rootScope, $location, UrlGeneratorFactory) ->
         url = new Url $location
         if urlGenerator != null
-          url.setUrlGenerator invokeUrlGenerator $injector
+          url.setUrlGenerator UrlGeneratorFactory.createService urlGenerator
         url.setApiVersion apiVersion
         $rootScope.Url = url;
         url
