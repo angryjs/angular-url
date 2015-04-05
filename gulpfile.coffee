@@ -11,8 +11,8 @@ gulp.task 'clean', () ->
 gulp.task 'coffee', ['clean'], () ->
 
   gulp.src [
-    # './url.config.coffee'
     './src/**'
+    './url.config.coffee'
   ]
   .pipe coffee()
   .pipe concat 'index.js'

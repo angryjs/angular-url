@@ -205,3 +205,8 @@
   ]);
 
 }).call(this);
+
+(function() {
+  angular.module('angryjs.url', []);
+
+}).call(this);
