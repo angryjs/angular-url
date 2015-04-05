@@ -1,4 +1,9 @@
 (function() {
+  angular.module('angryjs.url', []);
+
+}).call(this);
+
+(function() {
   var ConstantApiUrlGenerator;
 
   ConstantApiUrlGenerator = (function() {
@@ -203,10 +208,5 @@
       return new UrlGeneratorFactory($injector);
     }
   ]);
-
-}).call(this);
-
-(function() {
-  angular.module('angryjs.url', []);
 
 }).call(this);
